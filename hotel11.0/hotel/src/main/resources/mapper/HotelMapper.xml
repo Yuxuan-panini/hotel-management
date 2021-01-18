@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db_groupwork.hotel.mapper.HotelMapper">
+    <select id="getHotelNames"  resultType="String">
+                select hotel_name
+                from hotel
+    </select>
+    <select id="getRoomType" resultType="String">
+                select room_type
+                from hotel_room
+                where hotel_id=#{hotelId}
+    </select>
+    <select id="getHotelId" resultType="int">
+                select hotel_id
+                from hotel
+                where hotel_name=#{hotelName}
+    </select>
+</mapper>

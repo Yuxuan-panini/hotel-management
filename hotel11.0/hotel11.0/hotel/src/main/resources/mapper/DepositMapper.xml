@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db_groupwork.hotel.mapper.DepositMapper">
+    <insert id="genDeposit" useGeneratedKeys="true" keyProperty="depositId">
+        insert into deposit(customer_id,deposit_fee,deposit_time)
+        values(#{customerId},#{depositFee},#{depositTime})
+    </insert>
+    <update id="charge">
+        update customer
+        set balance=balance+#{cost}
+        where customer_id=#{id}
+    </update>
+</mapper>

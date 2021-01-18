@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <!DOCTYPE mapper
+                PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="db_groupwork.hotel.mapper.OrderMapper">
+        <select id="isHaveRoomType" resultType="int">
+                select count(room_type)
+                from hotel_room
+                where hotel_id=#{hotelId} and room_type=#{roomType}
+        </select>
+        <resultMap id="roomMap" type="db_groupwork.hotel.entity.Room">
+                <id property="roomType" column="room_type"/>
+                <id property="hotelId" column="hotel_id"/>
+                <result property="roomPrice" column="price"/>
+                <result property="rest" column="rest"/>
+                <result property="total" column="total"/>
+        </resultMap>
+        <select id="findRoomById" resultMap="roomMap">
+                select *
+                from hotel_room
+                where hotel_id=#{hotelId} and room_type=#{roomType}
+        </select>
+        <update id="orderRoom">
+                update hotel_room
+                set rest=rest-1
+                where hotel_id=#{hotelId} and room_type=#{roomType}
+        </update>
+        <select id="getBalance" resultType="int">
+                select balance
+                from customer
+                where customer_id=#{id}
+        </select>
+        <update id="purchase">
+                update customer
+                set balance=balance-#{cost}
+                where customer_id=#{id}
+        </update>
+        <insert id="genBill" useGeneratedKeys="true" keyProperty="billId">
+                insert into bill(customer_id,hotel_id,order_date,date_in,date_out,order_time,room_type,bill_fee,charge_state)
+                values(#{customerId},#{hotelId},#{bookTime},#{checkin},#{checkout},#{expectedStayDays},#{roomType},#{billFee},1)
+        </insert>
+        <resultMap id="billResultMap" type="db_groupwork.hotel.entity.Bill">
+                <id property="billId" column="bill_id"/>
+                <result property="customerId" column="customer_id"/>
+                <result property="hotelId" column="hotel_id"/>
+                <result property="bookTime" column="order_date"/>
+                <result property="checkin" column="date_in"/>
+                <result property="checkout" column="date_out"/>
+                <result property="expectedStayDays" column="order_time"/>
+                <result property="roomType" column="room_type"/>
+                <result property="billFee" column="bill_fee"/>
+                <result property="chargeState" column="charge_state"/>
+                <result property="canDelete" column="can_delete"/>
+                <result property="isIn" column="is_in"/>
+                <result property="valid" column="valid"/>
+        </resultMap>
+        <select id="getHistoryBill" resultMap="billResultMap">
+                select *
+                from bill
+                where customer_id=#{customerId}
+        </select>
+        <select id="findBillById" resultMap="billResultMap">
+        select *
+        from bill
+        where bill_id=#{billId}
+        </select>
+</mapper>

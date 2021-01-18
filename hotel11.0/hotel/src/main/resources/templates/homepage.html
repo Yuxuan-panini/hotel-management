@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>波普特酒店主页</title>
+
+    <!-- 移动设备优先-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--引入bootstrap的css文件-->
+    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+    <link rel="stylesheet" href="../static/css/homepage.css" th:href="@{/css/homepage.css}">
+    <link rel="stylesheet" href="../static/css/standard.css" th:href="@{/css/standard.css}">
+
+
+</head>
+
+<body>
+
+    <!--顶部导航栏-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+        <span class="navbar-brand"><img th:src="@{/img/logo1.png}" style="max-height: 65px;width: auto" alt="波普特酒店" class="img-format"></span>
+
+        <button class="navbar-toggler" data-toggle="collapse" data-target="#navbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbar">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link font-format active" href='/homepage'>首页</a>
+                <a class="nav-item nav-link font-format" href="/order">我的订单</a>
+                <a class="nav-item nav-link font-format" href="/reserve">房间预定</a>
+                <a class="nav-item nav-link font-format" href='/recharge'>VIP充值</a>
+            </div>
+            <span class="navbar-text ml-auto nav-text-format">联系电话：010-123456</span>
+        </div>
+
+    </nav>
+
+
+    <!--头部-->
+    <header class="mt-4 d-none d-lg-block">
+
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <img th:src="@{/img/logo2.png}" style="max-width: 200px;height: auto" alt="波普特酒店">
+                </div>
+                <div class="col pt-5">
+                    <blockquote class="blockquote text-center">
+                        <p class="head-sign-format"><strong>行者无涯，旅者之家</strong></p>
+                    </blockquote>
+                </div>
+                <div class="col"></div>
+            </div>
+        </div>
+
+    </header>
+
+    <blockquote class="mt-4 mb-2 blockquote text-center d-lg-none">
+        <p class="head-sign-format-mobile"><strong>行者无涯，旅者之家</strong></p>
+    </blockquote>
+
+    <!--轮播图-->
+    <!--移动端轮播图 5张图-->
+    <section class="mt-2 d-lg-none">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+                            <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img th:src="@{/img/carousel1.jpg}" class="d-block w-100" alt="客房">
+                            </div>
+                            <div class="carousel-item">
+                                <img th:src="@{/img/carousel2.jpg}" class="d-block w-100" alt="游泳池">
+                            </div>
+                            <div class="carousel-item">
+                                <img th:src="@{/img/carousel3.jpg}" class="d-block w-100" alt="餐饮区">
+                            </div>
+                            <div class="carousel-item">
+                                <img th:src="@{/img/carousel4.jpg}" class="d-block w-100" alt="阳台">
+                            </div>
+                            <div class="carousel-item">
+                                <img th:src="@{/img/carousel5.jpg}" class="d-block w-100" alt="盥洗室">
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--PC端轮播图 5张图-->
+    <section id="pc_carousel" class="mt-2 d-none d-lg-block" style="background: #cd9a6b">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-7">
+                    <div id="carousel-picture" class="carousel">
+                        <a class="carousel-item active" href="#" data-bgcolor="#cd9a6b" target="_blank"><img th:src="@{/img/carousel1.jpg}" class="w-100" alt="客房"></a>
+                        <a class="carousel-item" href="#" data-bgcolor="#582e12" target="_blank"><img th:src="@{/img/carousel2.jpg}" class="w-100" alt="游泳池"></a>
+                        <a class="carousel-item" href="#" data-bgcolor="#473686" target="_blank"><img th:src="@{/img/carousel3.jpg}" class="w-100" alt="餐饮区"></a>
+                        <a class="carousel-item" href="#" data-bgcolor="#b9cbef" target="_blank"><img th:src="@{/img/carousel4.jpg}" class="w-100" alt="阳台"></a>
+                        <a class="carousel-item" href="#" data-bgcolor="#835332" target="_blank"><img th:src="@{/img/carousel5.jpg}" class="w-100" alt="盥洗室"></a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card w-50 mt-5 border-0 mr-auto shadow py-3 carousel-format" style="background: rgba(0,0,0,0.4)">
+                        <div id="right_list" class="list-group">
+                            <a class="list-group-item text-nowrap text-truncate bg-transparent text-white-50 text-decoration-none" href="#">高端商务套间</a>
+                            <a class="list-group-item text-nowrap text-truncate bg-transparent text-white-50 text-decoration-none" href="#">齐全运动健身</a>
+                            <a class="list-group-item text-nowrap text-truncate bg-transparent text-white-50 text-decoration-none" href="#">顶峰餐饮特区</a>
+                            <a class="list-group-item text-nowrap text-truncate bg-transparent text-white-50 text-decoration-none" href="#">清亮行政套间</a>
+                            <a class="list-group-item text-nowrap text-truncate bg-transparent text-white-50 text-decoration-none" href="#">奢华总统套房</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--轮播图结束-->
+
+
+    <!--主要内容-->
+    <section class="mt-3">
+        <div class="container">
+            <!--第一部分-->
+            <div class="row">
+                <div class="col main-content1">
+                    <img th:src="@{/img/content0.jpg}" class="main-img mt-2" alt="介绍">
+                    <p>介绍</p>
+                </div>
+                <div class="col main-content1">
+                    <img th:src="@{/img/content0.jpg}" class="main-img mt-2" alt="介绍">
+                    <p>介绍</p>
+                </div>
+                <div class="col main-content1 d-none d-lg-block">
+                    <img th:src="@{/img/content0.jpg}" class="main-img mt-2" alt="介绍">
+                    <p>介绍</p>
+                </div>
+            </div>
+            <!--第二部分-->
+            <div class="row">
+                <div class="col main-content2">
+                    <img th:src="@{/img/content0.jpg}" class="main-img mt-2" alt="介绍">
+                    <p>介绍</p>
+                </div>
+                <div class="col main-content2">
+                    <img th:src="@{/img/content0.jpg}" class="main-img mt-2" alt="介绍">
+                    <p>介绍</p>
+                </div>
+                <div class="col main-content2 d-none d-lg-block">
+                    <img th:src="@{/img/content0.jpg}" class="main-img mt-2" alt="介绍">
+                    <p>介绍</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!--页脚-->
+    <footer class="mt-4 bg-dark text-light small">
+        <div class="container">
+            <div class="row pt-2 pb-4">
+
+                <div class="col-sm-12 col-md-10 pt-4">
+                    <p class="mb-2">波普特酒店是一家全国连锁酒店。</p>
+                    <ul class="nav">
+                        <li class="nav-item"><a href="#" class="nav-link text-white pl-0">关于我们</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-white pl-0">联系我们</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-white pl-0">加入我们</a></li>
+                        <li class="nav-item"><a href="#" class="nav-link text-white pl-0">帮助中心</a></li>
+                    </ul>
+                    <div class="text-muted">
+                        北京波普特有限公司  Copyright <i>2019</i>, All rights reserved.
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-2 text-md-right text-center p-0">
+                    <figure class="figure mt-3">
+                        <img th:src="@{/img/QRcode.png}" class="figure-img img-thumbnail" style="max-width: 100px;" alt="波普特酒店">
+                        <figcaption class="figure-caption text-center text-light">关注我们</figcaption>
+                    </figure>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!--先引入jQuery，后引入bootstrap.js-->
+    <script th:src="@{/js/jquery-3.5.1.min.js}"></script>
+    <script th:src="@{/js/bootstrap.bundle.js}"></script>
+    <script th:src="@{/js/jquery.validate.min.js}"></script>
+
+    <!--PC端轮播图特效-->
+    <script>
+        $(function () {
+            var ptimer = null;
+            var i = 0;
+            var sum = $("#carousel-picture a").length;
+            
+            //轮播切换图片
+            function change_pic() {
+                var pc_bg_color = $("#carousel-picture>a").eq(i).attr("data-bgcolor");
+                $("#carousel-picture>a").eq(i).fadeIn().siblings().fadeOut(900, function () {
+                    $("#pc_carousel").css("backgroundColor", pc_bg_color);
+                });
+            }
+
+            //轮播切换右侧列表
+            function change_text(){
+                $("#right_list>a").eq(i).addClass("text-white").removeClass("text-white-50")
+                    .siblings().addClass("text-white-50").removeClass("text-white");
+            }
+
+            $("#carousel-picture>a").hover(function (){
+                clearInterval(ptimer);
+            }, function () {
+                auto_play();
+            });
+
+            //自动播放函数
+            function auto_play(){
+                clearInterval(ptimer);
+                ptimer = setInterval(function () {
+                    i++;
+                    if(i == sum){
+                        i = 0;
+                    }
+                    change_pic();
+                    change_text();
+                },3000);
+            }
+
+            //初始化
+            var pc_bg_color = $("#carousel-picture>a").eq(0).attr("data-bgcolor");
+            $("#pc_carousel").css("backgroundColor", pc_bg_color);
+            $("#right_list>a").eq(0).addClass("text-white").removeClass("text-white-50")
+                .siblings().addClass("text-white-50").removeClass("text-white");
+
+            //开始轮播
+            auto_play();
+
+            var htimer = null;
+
+            $("#right_list>a").mouseover(function () {
+                $(this).addClass('text-info');
+                var obj = $(this);
+                htimer = setTimeout(function () {
+                    clearInterval(ptimer);
+                    i = obj.index();
+                    change_pic();
+                    change_text();
+                },500);
+            }).mouseout(function () {
+                $(this).removeClass('text-info');
+                clearTimeout(htimer);
+                auto_play();
+            });
+        });
+    </script>
+    <!--轮播图特效结束-->
+
+</body>
+
+</html>

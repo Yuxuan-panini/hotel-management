@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>波普特酒店注册</title>
+  <!-- 移动设备优先-->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!--引入bootstrap的css文件-->
+  <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}">
+
+  <link rel="stylesheet" href="../static/css/login.css" th:href="@{/css/login.css}">
+</head>
+
+<body>
+
+  <div class="page login-page">
+    <div class="container d-flex align-items-center">
+      <div class="form-holder has-shadow">
+        <div class="row">
+
+          <!--注册-->
+          <div class="col-lg-6">
+            <div class="info d-flex align-items-center">
+              <div class="content">
+                <div class="logo">
+                  <h1>欢迎注册</h1>
+                </div>
+                <p>波普特酒店欢迎您</p>
+              </div>
+            </div>
+          </div>
+
+          <!--表单面板-->
+          <div class="col-lg-6 bg-white">
+            <div class="form d-flex align-items-center">
+
+              <div class="content">
+
+                <form action="/regist" method="post" class="form-validate" id="loginFrom">
+                  <!--todo-->
+
+                  <div class="form-group">
+                    <input id="register-username" class="input-material" type="text" name="registerUsername"
+                      placeholder="请输入姓名" required>
+                    <div class="invalid-feedback">
+                      姓名必须在2~5位之间
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input id="register-password" class="input-material" type="password" name="registerPassword"
+                      placeholder="请输入密码" required>
+                    <div class="invalid-feedback">
+                      密码必须在6~18位之间
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <input id="register-passwords" class="input-material" type="password" name="registerPasswords"
+                      placeholder="确认密码" required>
+                    <div class="invalid-feedback">
+                      两次密码必须相同 且在6~18位之间
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <button id="reg_btn" type="submit" name="registerSubmit" class="btn btn-primary">注册</button>
+                  </div>
+
+                </form>
+              </div>
+
+              <div>
+                <small>已有账号?</small><a href="/" class="signup">&nbsp;登录</a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!--先引入jQuery，后引入bootstrap.js-->
+  <script th:src="@{../static/js/jquery-3.5.1.min.js}"></script>
+  <script th:src="@{../static/js/bootstrap.bundle.js}"></script>
+  <script th:src="@{../static/js/jquery.validate.min.js}"></script>
+
+  <script>
+    $(function () {
+      /*错误class  form-control is-invalid
+        正确class  form-control is-valid*/
+      var flagName = false;
+      var flagPas = false;
+      var flagPass = false;
+      var flagID = false;
+      /*验证姓名*/
+      var name, id, passWord, passWords;
+      $("#register-username").change(function () {
+        name = $("#register-username").val();
+        if (name.length < 2 || name.length > 5) {
+          $("#register-username").removeClass("form-control is-valid")
+          $("#register-username").addClass("form-control is-invalid");
+          flagName = false;
+        } else {
+          $("#register-username").removeClass("form-control is-invalid")
+          $("#register-username").addClass("form-control is-valid");
+          flagName = true;
+        }
+      })
+
+      /*验证用户名*/
+      $("#register-id").change(function () {
+        id = $("#register-id").val();
+        if (id.length < 2 || id.length > 20) {
+          $("#register-id").removeClass("form-control is-valid")
+          $("#register-id").addClass("form-control is-invalid");
+          flagID = false;
+        } else {
+          $("#register-id").removeClass("form-control is-invalid")
+          $("#register-id").addClass("form-control is-valid");
+          flagID = true;
+        }
+      })
+
+      /*验证密码*/
+      $("#register-password").change(function () {
+        passWord = $("#register-password").val();
+        if (passWord.length < 6 || passWord.length > 18) {
+          $("#register-password").removeClass("form-control is-valid")
+          $("#register-password").addClass("form-control is-invalid");
+          flagPas = false;
+        } else {
+          $("#register-password").removeClass("form-control is-invalid")
+          $("#register-password").addClass("form-control is-valid");
+          flagPas = true;
+        }
+      })
+
+      /*验证确认密码*/
+      $("#register-passwords").change(function () {
+        passWords = $("#register-passwords").val();
+        if ((passWord != passWords) || (passWords.length < 6 || passWords.length > 18)) {
+          $("#register-passwords").removeClass("form-control is-valid")
+          $("#register-passwords").addClass("form-control is-invalid");
+          flagPass = false;
+        } else {
+          $("#register-passwords").removeClass("form-control is-invalid")
+          $("#register-passwords").addClass("form-control is-valid");
+          flagPass = true;
+        }
+      })
+
+
+      $("#reg_btn").click(function () {
+        if (flagName && flagID && flagPas && flagPass) {
+          localStorage.setItem("id", id);
+          localStorage.setItem("name", name);
+          localStorage.setItem("passWord", passWord);
+
+          // var form = document.getElementById("loginFrom");
+          // form.submit();//form表单提交
+          document.getElementById("loginFrom").submit();
+
+        } else {
+          if (!flagName) {
+            $("#register-username").addClass("form-control is-invalid");
+          }
+          if (!flagID) {
+            $("#register-id").addClass("form-control is-invalid");
+          }
+          if (!flagPas) {
+            $("#register-password").addClass("form-control is-invalid");
+          }
+          if (!flagPass) {
+            $("#register-passwords").addClass("form-control is-invalid");
+          }
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

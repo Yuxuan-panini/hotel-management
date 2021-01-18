@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="webhotel:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>webhotel</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="webhotel-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="webhotel:war exploded" />
+    </root>
+  </artifact>
+</component>
