@@ -159,4 +159,5 @@ public class CustomerDao {
         return false;
     }
 
+    // update by wangyuchao
 }
